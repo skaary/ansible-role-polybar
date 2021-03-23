@@ -1,0 +1,17 @@
+---
+- name: ensure polybar build dir exists
+  file:
+    path: "{{ polybar_install_path }}{{ archive_dir.files[0] }}build"
+    state: directory
+  register: build_dir
+
+- name: cmake polybar
+  command: cmake ..
+  args:
+    chdir: "{{ build_dir.path }}"
+
+- name: make install polybar
+  make:
+    chdir: "{{ build_dir.path }}"
+    target: install
+  become: true

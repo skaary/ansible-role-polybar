@@ -1,0 +1,25 @@
+---
+- name: ensure dependencies are installed
+  apt:
+    name: "{{ polybar_dependencies }}"
+    state: present
+
+- name: fetch latest polybar release version
+  uri:
+    url: "{{ polybar_repo_api }}"
+    body_format: json
+    return_content: true
+  register: polybar
+
+- name: download and extract polybar .tar from official github
+  unarchive:
+    src: "{{ polybar_download_url }}"
+    dest: "{{ polybar_install_path }}"
+    remote_src: true
+    list_files: true
+  register: archive_dir
+  become: true
+  notify:
+    - ensure polybar build dir exists
+    - cmake polybar
+    - make install polybar

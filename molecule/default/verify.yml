@@ -1,0 +1,15 @@
+---
+- name: Verify
+  hosts: all
+
+  tasks:
+    - name: Collect package facts.
+      package_facts:
+        manager: "auto"
+
+    # - name: Verify Polybar is installed.
+    #   assert:
+    #     that:
+    #       - "'polybar' in ansible_facts.packages"
+    #     success_msg: "Polybar is installed."
+    #     fail_msg: "Polybar is not installed."
