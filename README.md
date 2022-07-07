@@ -3,15 +3,79 @@
 
 An Ansible Role that installs [Polybar](https://github.com/polybar/polybar) on Linux.
 
-## Requirements
+## Installation
 
-None
+Download the role directly from git by typing into your terminal:
 
-## Dependencies
+```bash
+$ ansible-galaxy install git+https://github.com/skaary/ansible-role-polybar.git
 
-None
+```
+or
 
-## Example Playbook
+```bash
+$ ansible-galaxy install git+https://github.com/skaary/ansible-role-polybar.git,,polybar
+```
 
+to change the installed role name from _ansible-role-polybar_ to just _polybar_.
+
+Alternatively, install the role via a _requirements.yml_ file, e.g. when installing multiple roles at once. See [ansible galaxy documentation](https://galaxy.ansible.com/docs/using/installing.html#installing-multiple-roles-from-a-file) for more information.
+
+<!-- ## Role variables
+
+polybar_user:
+  - name: ""
+    group: ""
+    home: ""
+polybar_user_home: ""
+polybar_install_path: /opt/
+polybar_dir: "{{ polybar_user_home }}/.config/polybar/" -->
+
+## Example playbook
+
+```yaml
+- hosts: all
+  roles:
+    - ansible-role-polybar
+```
+
+## Testing the role
+
+### Vagrant
+
+Vagrant can be used to test the role in order to graphically see it working in a virtual machine. Make sure Vagrant and VirtualBox are installed:
+
+```bash
+$ sudo apt install vagrant virtualbox
+```
+
+Use the following commands to run vagrant and boot up the virtual machine:
+
+```bash
+$ cd tests
+$ vagrant up
+```
+
+Use `vagrant destroy` after you are done testing to delete the virtual machine. For more information about Vagrant and its commands, see the [Vagrant documentation](https://www.vagrantup.com/docs/cli).
+
+### Molecule with Docker
+
+Molecule can be used to test the role with a docker container. Make sure Molecule is installed:
+
+```bash
+$ python3 -m pip install --user "molecule[docker]"
+```
+
+Use the following commands to run Molecule in order to create the docker container and access the created container:
+```bash
+$ molecule converge && molecule login
+```
+
+For more information on how to use Molecule please consult the [Molecule documentation](https://molecule.readthedocs.io/en/latest/getting-started.html).
+
+> Note: Python and Docker are required for the use of molecule. For more information, see [Molecule installation](https://molecule.readthedocs.io/en/latest/installation.html).
 
 ## License
+
+MIT / BSD
+
