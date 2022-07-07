@@ -3,6 +3,7 @@
   apt:
     name: "{{ polybar_dependencies }}"
     state: present
+  become: true
 
 - name: fetch latest polybar release version
   uri:
@@ -18,8 +19,8 @@
     remote_src: true
     list_files: true
   register: archive_dir
-  become: true
   notify:
     - ensure polybar build dir exists
     - cmake polybar
     - make install polybar
+  become: true

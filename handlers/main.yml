@@ -4,11 +4,13 @@
     path: "{{ polybar_install_path }}{{ archive_dir.files[0] }}build"
     state: directory
   register: build_dir
+  become: true
 
 - name: cmake polybar
   command: cmake ..
   args:
     chdir: "{{ build_dir.path }}"
+  become: true
 
 - name: make install polybar
   make:
