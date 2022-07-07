@@ -4,6 +4,8 @@ skip_list:
   - 'risky-shell-pipe'
   - 'git-latest'
   - 'fqcn-builtins'
+  - 'risky-file-permissions'
+  - 'var-spacing'
 
 warn_list:
   - 'experimental'
