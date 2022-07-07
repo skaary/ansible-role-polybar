@@ -1,0 +1,41 @@
+---
+polybar_version: "{{ polybar.json.tag_name }}"
+polybar_release: https://github.com/polybar/polybar/releases/download/
+polybar_repo_api: https://api.github.com/repos/polybar/polybar/releases/latest
+polybar_download_url: >-
+  {{polybar_release}}{{ polybar_version }}/polybar-{{ polybar_version }}.tar.gz
+polybar_install_path: /opt/
+# polybar_user:
+#   - name: ""
+#     group: ""
+#     home: ""
+# polybar_user_home: ""
+
+# polybar_dir: "{{ polybar_user_home }}/.config/polybar/"
+
+polybar_dependencies:
+  - git
+  - make
+  - cmake
+  - cmake-data
+  - build-essential
+  - libxcb1
+  - libxcb1-dev
+  - libxcb-composite0
+  - libxcb-composite0-dev
+  - libxcb-image0-dev
+  - libxcb-icccm4
+  - libxcb-icccm4-dev
+  - libxcb-util-dev
+  - libxcb-randr0
+  - libxcb-randr0-dev
+  - libxcb-ewmh-dev
+  - libjsoncpp-dev
+  - libuv1-dev
+  # - libxcb-util-dev
+  - xcb-proto
+  - sphinx-common
+  - python3-xcbgen
+  - pkg-config
+  - libcairo2
+  - libcairo2-dev
