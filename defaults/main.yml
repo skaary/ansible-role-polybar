@@ -16,6 +16,7 @@ polybar_install_path: /opt/
 polybar_dependencies:
   - git
   - make
+  - checkinstall
   - cmake
   - cmake-data
   - build-essential

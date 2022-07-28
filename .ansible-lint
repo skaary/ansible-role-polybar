@@ -6,6 +6,7 @@ skip_list:
   - 'fqcn-builtins'
   - 'risky-file-permissions'
   - 'var-spacing'
+  - 'internal-error'
 
 warn_list:
   - 'experimental'

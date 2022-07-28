@@ -22,5 +22,5 @@
   notify:
     - ensure polybar build dir exists
     - cmake polybar
-    - make install polybar
+    - make install polybar with checkinstall
   become: true

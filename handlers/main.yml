@@ -12,8 +12,14 @@
     chdir: "{{ build_dir.path }}"
   become: true
 
-- name: make install polybar
-  make:
+# - name: make install polybar
+#   make:
+#     chdir: "{{ build_dir.path }}"
+#     target: install
+#   become: true
+
+- name: make install polybar with checkinstall
+  command: checkinstall --pkgname=polybar --pkgversion="{{ polybar.json.tag_name }}" --pkgsource="{{ build_dir.path }}" -y
+  args:
     chdir: "{{ build_dir.path }}"
-    target: install
   become: true
